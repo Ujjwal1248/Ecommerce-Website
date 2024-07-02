@@ -25,6 +25,11 @@ router.get("/", (req, res) => {
   res.render("index", { footer: false });
 });
 
+//Contact route
+router.get("/contact", (req, res) => {
+  res.render("contact");
+})
+
 // Authentication routes
 router.get("/login", (req, res) => {
   res.render("login", { footer: false });
@@ -169,7 +174,7 @@ router.post("/admin", upload.single("pPhoto"), isLoggedIn, async (req, res) => {
     pPhoto: req.file.filename,
   });
   await product.save();
-  res.redirect("/shop");
+  res.redirect("/admin");
 });
 
 router.get("/admin-products", isLoggedIn, async (req, res) => {

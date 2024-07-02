@@ -1,7 +1,0 @@
-=> Login
-=> Register
-=> Profile
-=> Home
-=> Admin
-=> Cart
-=> 

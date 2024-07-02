@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const plm = require("passport-local-mongoose");
 
-mongoose.connect("mongodb://127.0.0.1:27017/shopping");
+mongoose.connect(
+  "mongodb+srv://ujjwalagrawal1248:o3YS3wdIQalj9upg@ecommer-website.ap3ri6a.mongodb.net/?retryWrites=true&w=majority&appName=Ecommer-Website"
+);
 
 const cartItemSchema = new mongoose.Schema({
   product: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },

@@ -27,7 +27,7 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <p class="price">$<%= product.pPrice %>
+                    <p class="price">₹ <%= product.pPrice %>
                     </p>
                     <br />
                     <a href="/addtocart/<%= product._id %>" class="btn add-to-cart">ADD TO CART</a>
@@ -35,13 +35,13 @@
             </div>
             <% }); %>
     </div>
+    <a href="/admin"><button class="btn1">Make your Items listed</button></a>
 
     <div id="cart">
         <h3>Shopping Cart</h3>
         <ul id="cart-items"></ul>
         <div id="total-amount">Total: $0</div>
     </div>
-    <a href="/checkout"><button class="floating-btn">CheckOut</button></a>
 </body>
 
 </html>
