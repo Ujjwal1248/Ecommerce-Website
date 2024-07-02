@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Card</title>
+    <link rel="stylesheet" href="/stylesheets/shop.css" />
+    <!-- <script src="/javascripts/backpack.js"></script> -->
+</head>
+
+<body>
+    <a href="/cart"><button class="show-cart-btn">Cart</button></a>
+    <div class="container">
+        <% products.forEach(function(product) { %>
+            <div class="card">
+                <img src="/images/product/<%= product.pPhoto %>" alt="<%= product.pName %>" />
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <%= product.pName %>
+                    </h4>
+                    <i class="icon">&#9733;</i>
+                </div>
+                <div class="desc">
+                    <p>
+                        <%= product.pDescription %>
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <p class="price">$<%= product.pPrice %>
+                    </p>
+                    <br />
+                    <a href="/addtocart/<%= product._id %>" class="btn add-to-cart">ADD TO CART</a>
+                </div>
+            </div>
+            <% }); %>
+    </div>
+
+    <div id="cart">
+        <h3>Shopping Cart</h3>
+        <ul id="cart-items"></ul>
+        <div id="total-amount">Total: $0</div>
+    </div>
+    <a href="/checkout"><button class="floating-btn">CheckOut</button></a>
+</body>
+
+</html>

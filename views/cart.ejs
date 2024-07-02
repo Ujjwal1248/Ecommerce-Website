@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="/stylesheets/cart.css" />
+</head>
+
+<body>
+    <div class="cart-page">
+        <div class="cart-details">
+            <h1>Cart Details</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Sub Total</th>
+                        <th>Remove Product</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% cartItems.forEach(function(item) { %>
+                        <tr>
+                            <td>
+                                <img class="image" src="/images/product/<%= item.product.pPhoto %>"
+                                    alt="Product Image" />
+                            </td>
+                            <td>
+                                <%= item.product.pName %>
+                            </td>
+                            <td>₹ <%= item.product.pPrice %>
+                            </td>
+                            <td>
+                                <div class="quantity-form">
+                                    <input type="text" class="quantity" value="<%= item.quantity %>" readonly />
+                                </div>
+                            </td>
+                            <td>₹ <%= item.product.pPrice * item.quantity %>
+                            </td>
+                            <td>
+                                <form action="/removeFromCart/<%= item.product._id %>" method="POST">
+                                    <button type="submit">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }); %>
+                            <tr>
+                                <td colspan="4">Total</td>
+                                <td>₹ <%= totalPrice %>
+                                </td>
+                                <td>
+                                    <a href="/pay-now/<%= user._id %>?totalPrice=<%= totalPrice %>">
+                                        <button class="paynow-btn" type="submit">Pay Now</button>
+                                    </a>
+
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
