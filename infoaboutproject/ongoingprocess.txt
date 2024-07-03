@@ -3,3 +3,6 @@
 => More Dynamic Webpage For Admin to add more description about the product
 => More Dynamic Webpage For User to enhance their shopping
 => ML using for automated results
+
+=> To know all the functionalities in video format follow the link:
+    https://drive.google.com/file/d/1RWGPZp9uCJTyblvd0KaVDqh2SmfXlFu1/view?usp=drive_link
