@@ -1,0 +1,69 @@
+=> Login
+=> Register
+=> Profile
+=> Home
+=> Admin
+=> Cart
+=> Admin-Product
+
+// Functionalities
+
+1. Classy home page website with full functional navBar ==> To access the shop click on any item
+2. Sell option for adding products to the shop
+3. Customer Service for the contact page
+4. Account for the profile page
+5. Services for the shop page
+
+// BluePrint of the Project
+
+Authentication and User Management ==>
+1. **Login and Logout**:
+   - **GET /login**: Renders login page.
+   - **POST /login**: Authenticates user; redirects based on success or failure.
+   - **GET /logout**: Logs out user; redirects to login page.
+
+2. **Registration**:
+   - **GET /register**: Renders registration page.
+   - **POST /register**: Registers new user; redirects to profile.
+
+3. **Profile**:
+   - **GET /profile**: Displays user profile (authentication required).
+
+Shopping and Cart Management ==>
+4. **Home and Shop**:
+   - **GET /**: Renders home page.
+   - **GET /shop**: Displays products (authentication required).
+
+5. **Cart Operations**:
+   - **GET /cart**: Shows user's cart and total price (authentication required).
+   - **GET /addtocart/:productID**: Adds/increments product in cart; redirects to shop (authentication required).
+   - **POST /removeFromCart/:productID**: Removes/decrements product in cart; redirects to cart (authentication required).
+
+6. **Payment**:
+   - **GET /pay-now/:userID**: Processes payment, records sales, clears cart; redirects to shop (authentication required).
+
+Admin and Product Management ==>
+7. **Admin Dashboard**:
+   - **GET /admin**: Renders admin dashboard (authentication required).
+
+8. **Product Management**:
+   - **POST /admin**: Adds new product; redirects to shop (authentication required).
+   - **GET /admin-products**: Shows admin’s products and sales; calculates total earnings (authentication required).
+   - **POST /delete-product/:productId**: Deletes specified product; redirects to admin-products (authentication required).
+
+Middleware ==>
+9. **isLoggedIn Middleware**: Ensures certain routes are only accessible to authenticated users; redirects unauthenticated users to login page.
+
+Models ==>
+10. **User Model**: Manages user info, cart, purchased products.
+11. **Product Model**: Manages product details.
+12. **Sale Model**: Records sales information.
+
+File Uploads ==>
+13. **Multer Configuration**: Manages file uploads for product images.
+
+This project includes authentication, user management, shopping cart operations, payment processing, and an admin interface for product management.
+
+
+=> To know all the functionalities in video format follow the link:
+    https://drive.google.com/file/d/1RWGPZp9uCJTyblvd0KaVDqh2SmfXlFu1/view?usp=drive_link

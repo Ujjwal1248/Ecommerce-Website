@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Producer Dashboard</title>
+  <link href="/stylesheets/admin-product.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="main"></div>
+
+  <div class="container">
+    <div class="pd">
+      <h1>Producer Dashboard</h1>
+      <div class="total-earning">
+        Total Earnings: ₹<%= totalEarnings.toFixed(2) %>
+      </div>
+    </div>
+
+    <!-- Sales Information -->
+    <div class="section">
+      <div class="section-title">Sales Information</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity Sold</th>
+            <th>Consumer Name</th>
+            <th>Consumer Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% sales.forEach(sale => { %>
+            <tr>
+              <td><%= sale.productId.pName %></td>
+              <td><%= sale.quantity %></td>
+              <td><%= sale.userId.fullName %></td>
+              <td><%= sale.userId.email %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Products Listing -->
+    <div class="section">
+      <div class="section-title">Products Listed</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% products.forEach(product => { %>
+            <tr>
+              <td><%= product.pName %></td>
+              <td>
+                <img src="/images/product/<%= product.pPhoto %>" alt="<%= product.pName %>" class="product-img" />
+              </td>
+              <td><%= product.pDescription %></td>
+              <td>₹<%= product.pPrice %></td>
+              <td>
+                <form action="/delete-product/<%= product._id %>" method="POST">
+                  <button class="btn-delete" type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+
+      <a href="/admin">
+        <button class="btn btn-add">Add New Product</button>
+      </a>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart Page</title>
+  <link rel="stylesheet" href="/stylesheets/cart.css" />
+</head>
+
+<body>
+  <a href="/wallet" class="wallet-btn">
+    Wallet: ₹<%= user.wallet %>
+  </a>
+
+  <div class="cart-page">
+    <div class="cart-details">
+      <h1>Cart Details</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Sub Total</th>
+            <th>Remove Product</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% cartItems.forEach(function(item) { 
+              const priceToUse = item.bargainedPrice || item.product.pPrice;
+          %>
+            <tr>
+              <td>
+                <img class="image" src="/images/product/<%= item.product.pPhoto %>" alt="Product Image" />
+              </td>
+              <td><%= item.product.pName %></td>
+              <td>
+                ₹ <%= priceToUse %>
+                <% if (item.bargainedPrice) { %>
+                  <span style="color: green; font-size: 0.8em;">(Bargained)</span>
+                <% } %>
+              </td>
+              <td>
+                <div class="quantity-form">
+                  <input type="text" class="quantity" value="<%= item.quantity %>" readonly />
+                </div>
+              </td>
+              <td>₹ <%= priceToUse * item.quantity %></td>
+              <td>
+                <form action="/removeFromCart/<%= item.product._id %>" method="POST">
+                  <button type="submit">Remove</button>
+                </form>
+              </td>
+            </tr>
+          <% }); %>
+
+          <tr>
+            <td colspan="4"><strong>Total</strong></td>
+            <td><strong>₹ <%= totalPrice %></strong></td>
+            <td>
+              <form id="payNowForm" action="/pay-now/<%= user._id %>" method="GET" onsubmit="return confirmWalletPayment();">
+                <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
+                <button class="paynow-btn" type="submit">Pay Now</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const total = <%- JSON.stringify(totalPrice || 0) %>;
+    const wallet = <%- JSON.stringify(user.wallet || 0) %>;
+
+    function confirmWalletPayment() {
+      if (wallet < total) {
+        alert(`Insufficient wallet balance.\nYour Wallet: ₹${wallet}\nTotal Price: ₹${total}`);
+        return false;
+      }
+
+      return confirm(`This will deduct ₹${total} from your wallet (Current Balance: ₹${wallet}). Proceed?`);
+    }
+  </script>
+</body>
+
+</html>

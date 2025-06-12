@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending Bargain Requests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 2em;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 18px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.1em;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        button[type="submit"]:nth-child(1) {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button[type="submit"]:nth-child(1):hover {
+            background-color: #45a049;
+        }
+
+        button[type="submit"]:nth-child(2) {
+            background-color: #f44336;
+            color: white;
+        }
+
+        button[type="submit"]:nth-child(2):hover {
+            background-color: #e53935;
+        }
+
+        form {
+            display: inline-block;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .info-box {
+            text-align: center;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #e0f7fa;
+            border-radius: 8px;
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="info-box">
+            <h2>Review and Approve Pending Bargains</h2>
+            <p>Here you can review the pending bargain requests from buyers. You can either approve or reject the proposed price.</p>
+        </div>
+
+        <h1>Pending Bargain Requests</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Buyer</th>
+                    <th>Proposed Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% bargains.forEach((bargain) => { %>
+                    <tr>
+                        <td>
+                            <%= bargain.productId.pName %>
+                        </td>
+                        <td>
+                            <%= bargain.buyerId.fullName %>
+                        </td>
+                        <td>₹ <%= bargain.proposedPrice %></td>
+                        <td>
+                            <form action="/bargain/<%= bargain._id %>/approve" method="POST" style="display:inline;">
+                                <button type="submit">Approve</button>
+                            </form>
+                            <form action="/bargain/<%= bargain._id %>/reject" method="POST" style="display:inline;">
+                                <button type="submit">Reject</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
