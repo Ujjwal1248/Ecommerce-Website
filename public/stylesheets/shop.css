@@ -1,0 +1,239 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.show-cart-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  z-index: 1000;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* space between cards */
+  justify-content: center;
+  margin-top: 60px; /* Ensure cards are not hidden behind the fixed cart */
+}
+.card {
+  width: 18rem;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+.card img {
+  height: 225px;
+  width: 100%;
+}
+.card-body,
+.card-footer {
+  padding: 16px;
+}
+.card-title {
+  margin: 0;
+  font-size: 1.25rem;
+  display: inline-block;
+}
+.icon {
+  font-size: 1.5rem;
+  float: right;
+}
+.price {
+  font-size: 1.25rem;
+  display: inline-block;
+  margin: 0;
+  margin-bottom: 7px;
+}
+.btn {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+  text-align: center;
+  width: calc(100% - 66px);
+}
+#cart {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  width: 300px;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: none; /* Hide cart by default */
+  z-index: 999;
+}
+#cart ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#cart li {
+  margin-bottom: 10px;
+}
+#total-amount {
+  margin-top: 20px;
+  font-size: 1.25rem;
+}
+
+.floating-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  background-color: black;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.desc {
+  padding: 0 16px 16px 16px; /* Added padding for better spacing */
+}
+
+.desc p {
+  margin: 0;
+  font-size: 1rem;
+  height: 35px;
+  color: #555; /* Changed text color for better readability */
+  line-height: 1.5; /* Improved line height for better readability */
+  text-align: justify; /* Justified text for a cleaner look */
+}
+
+.remove-item {
+  margin-left: 10px;
+  background-color: black; /* Red background */
+  color: white; /* White text */
+  border: none; /* Remove default border */
+  padding: 5px 10px; /* Padding */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 10px;
+}
+
+.remove-item:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+.btn1{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  background-color: black;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.wallet-btn {
+  position: fixed;
+  left: 0;
+  top: 5%;
+  transform: translateY(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 0 20px 20px 0;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+}
+
+.wallet-btn:hover {
+  background-color: #222;
+}
+
+.bargain-form {
+  margin: 1rem 0;
+}
+
+.bargain-input-group {
+  display: flex;
+  max-width: 280px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.bargain-input {
+  flex: 1;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.bargain-input::placeholder {
+  color: #aaa;
+}
+
+.bargain-input:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 2px rgba(0, 123, 255, 0.4);
+}
+
+.bargain-btn {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.bargain-btn:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+.navbar {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.2); /* transparent white */
+  backdrop-filter: blur(10px); /* for glass effect */
+  border-radius: 20px;
+  padding: 10px 30px;
+  display: flex;
+  gap: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.navbar a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #a29e9e;
+}

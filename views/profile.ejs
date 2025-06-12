@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/profile.css" />
+  </head>
+  <body>
+    <div class="background">
+      <div class="transparent">
+        <img
+          src="/images/server/pexels-eberhardgross-1612351.jpg"
+          alt="profile picture"
+        />
+        <div class="info">
+          <p class="user"><b><%= user.fullName %></b></p>
+          <p>@<%= user.username %></p>
+          <p><%= user.email %></p>
+          <p>
+            Member Since: <%= new Date(user.date).toLocaleDateString('en-GB', {
+            day: '2-digit', month: '2-digit', year: 'numeric' }) %>
+          </p>
+        </div>
+        <a href="/logout" class="log">Log out</a>
+      </div>
+    </div>
+  </body>
+</html>
