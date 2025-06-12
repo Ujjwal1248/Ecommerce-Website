@@ -161,6 +161,7 @@ th {
 .paynow-btn:active {
     background-color: #e6554a;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+<<<<<<< HEAD
 }
 
 .btn1{
@@ -193,4 +194,6 @@ th {
 
 .wallet-btn:hover {
   background-color: #222;
+=======
+>>>>>>> 220806751d1eb537ad2fdaabbd0da0803e3ae830
 }

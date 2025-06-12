@@ -75,6 +75,7 @@ button:hover {
   background-color: black;
   padding: 10px 20px;
   border-radius: 20px;
+<<<<<<< HEAD
 }
 
 .navbar {
@@ -102,3 +103,6 @@ button:hover {
   .navbar a:hover {
     color: #a29e9e;
   }
+=======
+}
+>>>>>>> 220806751d1eb537ad2fdaabbd0da0803e3ae830

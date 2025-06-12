@@ -226,6 +226,7 @@ a{
     margin-left: auto;
     margin-right: auto;
   }
+<<<<<<< HEAD
 }
 
 
@@ -253,4 +254,6 @@ a{
 
 .navbar a:hover {
   color: #a29e9e;
+=======
+>>>>>>> 220806751d1eb537ad2fdaabbd0da0803e3ae830
 }

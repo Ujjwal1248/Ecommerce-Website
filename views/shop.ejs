@@ -11,6 +11,7 @@
 
 <body>
     <a href="/cart"><button class="show-cart-btn">Cart</button></a>
+<<<<<<< HEAD
     <a href="/wallet" class="wallet-btn">
         Wallet: ₹<%= user.wallet %>
     </a>
@@ -23,6 +24,8 @@
         <a href="/admin-products">Statistics</a>
         <a href="/profile">Profile</a>
     </nav>
+=======
+>>>>>>> 220806751d1eb537ad2fdaabbd0da0803e3ae830
     <div class="container">
         <% products.forEach(function(product) { %>
             <div class="card">
@@ -44,6 +47,7 @@
                     <br />
                     <a href="/addtocart/<%= product._id %>" class="btn add-to-cart">ADD TO CART</a>
                 </div>
+<<<<<<< HEAD
                 <form action="/bargain/<%= product._id %>" method="POST" class="bargain-form">
                     <div class="bargain-input-group">
                       <input
@@ -64,6 +68,10 @@
 
             <% }); %>
 
+=======
+            </div>
+            <% }); %>
+>>>>>>> 220806751d1eb537ad2fdaabbd0da0803e3ae830
     </div>
     <a href="/admin"><button class="btn1">Make your Items listed</button></a>
 

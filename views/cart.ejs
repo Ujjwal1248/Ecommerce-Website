@@ -9,9 +9,12 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <a href="/wallet" class="wallet-btn">
         Wallet: ₹<%= user.wallet %>
     </a>
+=======
+>>>>>>> 220806751d1eb537ad2fdaabbd0da0803e3ae830
     <div class="cart-page">
         <div class="cart-details">
             <h1>Cart Details</h1>
@@ -27,6 +30,7 @@
                     </tr>
                 </thead>
                 <tbody>
+<<<<<<< HEAD
                     <% cartItems.forEach(function(item) { 
                         const priceToUse = item.bargainedPrice || item.product.pPrice;
                    %>
@@ -59,11 +63,39 @@
                    </tr>
                    <% }); %>
                    
+=======
+                    <% cartItems.forEach(function(item) { %>
+                        <tr>
+                            <td>
+                                <img class="image" src="/images/product/<%= item.product.pPhoto %>"
+                                    alt="Product Image" />
+                            </td>
+                            <td>
+                                <%= item.product.pName %>
+                            </td>
+                            <td>₹ <%= item.product.pPrice %>
+                            </td>
+                            <td>
+                                <div class="quantity-form">
+                                    <input type="text" class="quantity" value="<%= item.quantity %>" readonly />
+                                </div>
+                            </td>
+                            <td>₹ <%= item.product.pPrice * item.quantity %>
+                            </td>
+                            <td>
+                                <form action="/removeFromCart/<%= item.product._id %>" method="POST">
+                                    <button type="submit">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }); %>
+>>>>>>> 220806751d1eb537ad2fdaabbd0da0803e3ae830
                             <tr>
                                 <td colspan="4">Total</td>
                                 <td>₹ <%= totalPrice %>
                                 </td>
                                 <td>
+<<<<<<< HEAD
                                     <form id="payNowForm" action="/pay-now/<%= user._id %>" method="GET" onsubmit="return confirmWalletPayment();">
                                         <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
                                         <button class="paynow-btn" type="submit">Pay Now</button>
@@ -71,6 +103,11 @@
                                       
                                       
                                       
+=======
+                                    <a href="/pay-now/<%= user._id %>?totalPrice=<%= totalPrice %>">
+                                        <button class="paynow-btn" type="submit">Pay Now</button>
+                                    </a>
+>>>>>>> 220806751d1eb537ad2fdaabbd0da0803e3ae830
 
                                 </td>
                             </tr>
@@ -78,6 +115,7 @@
             </table>
         </div>
     </div>
+<<<<<<< HEAD
     <script>
         function confirmWalletPayment() {
             const total = totalPrice;
@@ -96,4 +134,8 @@
 </body>
 
 
+=======
+</body>
+
+>>>>>>> 220806751d1eb537ad2fdaabbd0da0803e3ae830
 </html>

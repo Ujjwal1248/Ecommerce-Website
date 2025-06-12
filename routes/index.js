@@ -6,8 +6,11 @@ const userModel = require("./users");
 const productModel = require("./products");
 const saleModel = require("./sale");
 const upload = require("./multer");
+<<<<<<< HEAD
 const bargainModel = require("./bargain");
 
+=======
+>>>>>>> 220806751d1eb537ad2fdaabbd0da0803e3ae830
 
 // Configure passport
 passport.use(new localStrategy(userModel.authenticate()));
@@ -77,7 +80,10 @@ router.get("/profile", isLoggedIn, (req, res) => {
   res.render("profile", { user: req.user });
 });
 
+<<<<<<< HEAD
 // /cart route
+=======
+>>>>>>> 220806751d1eb537ad2fdaabbd0da0803e3ae830
 router.get("/cart", isLoggedIn, async (req, res) => {
   const user = await userModel
     .findOne({ email: req.user.email })
@@ -85,13 +91,18 @@ router.get("/cart", isLoggedIn, async (req, res) => {
 
   let totalPrice = 0;
   user.cart.forEach((item) => {
+<<<<<<< HEAD
     const price = item.bargainedPrice || item.product.pPrice;
     totalPrice += price * item.quantity;
+=======
+    totalPrice += item.product.pPrice * item.quantity;
+>>>>>>> 220806751d1eb537ad2fdaabbd0da0803e3ae830
   });
 
   res.render("cart", { user, cartItems: user.cart, totalPrice });
 });
 
+<<<<<<< HEAD
 
 
 router.get("/shop", isLoggedIn, async (req, res) => {
@@ -101,6 +112,13 @@ router.get("/shop", isLoggedIn, async (req, res) => {
 });
 
 
+=======
+router.get("/shop", isLoggedIn, async (req, res) => {
+  const products = await productModel.find();
+  res.render("shop", { products });
+});
+
+>>>>>>> 220806751d1eb537ad2fdaabbd0da0803e3ae830
 router.get("/addtocart/:productID", isLoggedIn, async (req, res) => {
   const user = await userModel.findOne({ email: req.user.email });
   const cartItem = user.cart.find(
@@ -138,6 +156,7 @@ router.post("/removeFromCart/:productID", isLoggedIn, async (req, res) => {
 router.get("/pay-now/:userID", isLoggedIn, async (req, res) => {
   try {
     const totalPrice = parseFloat(req.query.totalPrice);
+<<<<<<< HEAD
     const buyer = await userModel
       .findById(req.params.userID)
       .populate("cart.product");
@@ -270,6 +289,38 @@ router.post("/bargain/:id/reject", isLoggedIn, async (req, res) => {
   res.redirect("/bargains");
 });
 
+=======
+    const user = await userModel
+      .findById(req.params.userID)
+      .populate("cart.product");
+
+    user.totalPrice += totalPrice;
+
+    const newSales = user.cart.map((item) => {
+      const totalEarnings = item.quantity * item.product.pPrice;
+      return {
+        productId: item.product._id,
+        userId: req.user._id,
+        quantity: item.quantity,
+        consumerName: req.user.fullName,
+        totalEarnings,
+      };
+    });
+
+    await saleModel.create(newSales);
+
+    user.purchasedProducts.push(...user.cart.map((item) => item.product._id));
+    user.cart = [];
+
+    await user.save();
+    res.redirect("/shop");
+  } catch (err) {
+    console.error("Error creating sales:", err);
+    res.status(500).send("Error creating sales");
+  }
+});
+
+>>>>>>> 220806751d1eb537ad2fdaabbd0da0803e3ae830
 //Admin Routes
 router.get("/admin", isLoggedIn, (req, res) => {
   res.render("admin");
